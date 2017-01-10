@@ -1,0 +1,22 @@
+<center>
+  <input type="text" id="keyword" ng-model="keyword">
+  <label>
+    <input type="checkbox" ng-model="userNameOnly" ng-change="getData()">&nbsp; Strictly user name search
+  </label><br/>
+  <div class="name" ng-repeat="data in dataSet.items" >
+    <a href="#user/{{data.login}}">
+      <div class="nameImg">
+        <img src="{{data.avatar_url}}">
+      </div>
+      <div class="nameText">
+        <h3>@{{data.login}}</h3>
+      </div>
+    </a>
+  </div>    
+</div>
+<div id="waiting" ng-show="loading==true">
+  <img src="assets/waiting.gif" width="60">
+</div>
+<div id="noResults" ng-show="noResults==true">
+  <center>No Results Found</center>
+</center>

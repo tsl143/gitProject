@@ -1,0 +1,38 @@
+<div id="userPage">
+	
+	<div id="waiting" ng-show="loading==true">
+	  <img src="assets/waiting.gif" width="60">
+	</div>
+	
+	<div id="owner">
+		<img class="userImg" src="{{user.avatar_url}}">
+		<div id="userDetails">
+			<span><a id="userName" href="{{user.html_url}}" target="_blank">{{user.name}}</a>, {{user.location}}</span>
+			<span id="userLogin">@{{user.login}}&nbsp;(<b>{{totalRepos}}</b> repos)</span>
+			<span>{{user.email}}</span>
+
+			<p><i>{{user.bio}}</i></p>
+			
+			<span>{{user.followers}}, Followers</span>
+			<span>{{user.following}}, Following</span>
+		</div>
+		<label><input type="checkbox" ng-model="showAll">Show Raw Data</label>
+	</div>
+	
+	<div id="repos" ng-show="showAll==false">
+		<div class="repo" ng-repeat="data in repos" >
+			<h3><a href="{{data.html_url}}" target="_blank">{{data.name}}</a></h3>
+			<p>{{data.description| limitWords}}</p>
+		</div>
+	</div>
+
+	<div id="userAllDetails" ng-show="showAll==true">
+		<table>
+		<tr class="repo" ng-repeat="data in userData" >
+				<td class="border-right">{{data.key}}</td>
+				<td>{{data.value}}</td>
+		</tr>
+		</table>
+	</div>
+
+</div>
